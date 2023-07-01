@@ -109,26 +109,45 @@ Is Isomorphic
 """
 
 
-def is_isomorphic(s, t):
-    if len(s) != len(t):
-        return False
+# def is_isomorphic(s, t):
+#     if len(s) != len(t):
+#         return False
+#
+#     dic = {}
+#     set_values = set()
+#
+#     for i in range(len(s)):
+#         if s[i] not in dic:
+#             if t[i] in set_values:
+#                 return False
+#             dic[s[i]] = t[i]
+#             set_values.add(t[i])
+#         else:
+#             if dic[s[i]] != t[i]:
+#                 return False
+#
+#     return True
+#
+#
+# print(is_isomorphic('paper', 'title'))
 
-    dic = {}
-    set_values = set()
+# -----------------------------------------------------------------
 
-    for i in range(len(s)):
-        if s[i] not in dic:
-            if t[i] in set_values:
-                return False
-            dic[s[i]] = t[i]
-            set_values.add(t[i])
-        else:
-            if dic[s[i]] != t[i]:
-                return False
-
-    return True
+"""
+a1z26
+    erfan => [31, 44, 32, 27, 40]
+"""
 
 
-print(is_isomorphic('paper', 'title'))
+def encode(text):
+    return [ord(elm) - 70 for elm in text]
+
+
+def decode(lst):
+    return "".join([chr(elm + 70)for elm in lst])
+
+
+print(encode('erfan'))
+print(decode([31, 44, 32, 27, 40]))
 
 # -----------------------------------------------------------------
