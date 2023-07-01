@@ -30,49 +30,74 @@ Top one
 
 # -----------------------------------------------------------------
 
-from string import ascii_letters
+# from string import ascii_letters
 
 """
 Caesar Cipher
 """
 
 
-def encrypt(string: str, key: int):
-    alpha = ascii_letters
-    result = ''
+# def encrypt(string: str, key: int):
+#     alpha = ascii_letters
+#     result = ''
+#
+#     for ch in string:
+#         if ch not in alpha:
+#             result += ch
+#         else:
+#             new_key = (alpha.index(ch) + key) % len(alpha)
+#             result += alpha[new_key]
+#
+#     return result
+#
+#
+# def decrypt(string: str, key: int):
+#     key *= -1
+#     return encrypt(string, key)
+#
+#
+# def brute_force(string):
+#     alpha = ascii_letters
+#     key = 1
+#     result = ''
+#     brute_force_data = {}
+#
+#     while key <= len(alpha):
+#         result = decrypt(string, key)
+#         brute_force_data[key] = result
+#         result = ''
+#         key += 1
+#     return brute_force_data
+#
+#
+# print(encrypt('erfan', 7))
+# print(decrypt('lymhu', 7))
+# print(brute_force('lymhu'))
 
-    for ch in string:
-        if ch not in alpha:
-            result += ch
-        else:
-            new_key = (alpha.index(ch) + key) % len(alpha)
-            result += alpha[new_key]
+# -----------------------------------------------------------------
 
-    return result
+"""
+Search Insert
+    [1, 2, 5, 8, 10], 6 => 3
+"""
 
 
-def decrypt(string: str, key: int):
-    key *= -1
-    return encrypt(string, key)
-
-
-def brute_force(string):
-    alpha = ascii_letters
-    key = 1
-    result = ''
-    brute_force_data = {}
-
-    while key <= len(alpha):
-        result = decrypt(string, key)
-        brute_force_data[key] = result
-        result = ''
-        key += 1
-    return brute_force_data
-
-
-print(encrypt('erfan', 7))
-print(decrypt('lymhu', 7))
-print(brute_force('lymhu'))
+# def search_insert(array, val):
+#     low = 0
+#     high = len(array) - 1
+#     mid = high // 2
+#
+#     while low <= high:
+#         if val > array[mid]:
+#             mid += 1
+#             low = mid
+#         else:
+#             mid -= 1
+#             high = mid
+#     return low
+#
+#
+# print(search_insert([1, 2, 5, 8, 10], 6))
 
 # -----------------------------------------------------------------
 
