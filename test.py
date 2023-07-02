@@ -374,21 +374,48 @@ Binary Search
 """
 
 
-def binary_search(array, element):
+# def binary_search(array, element):
+#     low, high = 0, len(array) - 1
+#
+#     while low <= high:
+#         mid = (high + low) // 2
+#         val = array[mid]
+#         if val > element:
+#             high = mid - 1
+#         elif val < element:
+#             low = mid + 1
+#         else:
+#             return mid
+#     return -1
+#
+#
+# print(binary_search([2, 3, 4, 5, 8, 9, 10, 15, 17], 15))
+
+# -----------------------------------------------------------------
+
+"""
+First Occurrence
+    [2, 3, 3, 4, 4, 4, 5, 5, 6], 5 => 6
+"""
+
+
+def first_occurrence(array, element):
     low, high = 0, len(array) - 1
 
     while low <= high:
-        mid = (high + low) // 2
-        val = array[mid]
-        if val > element:
-            high = mid - 1
-        elif val < element:
+        mid = (low + high) // 2
+
+        if low == high:
+            break
+        elif array[mid] < element:
             low = mid + 1
         else:
-            return mid
-    return -1
+            high = mid
+
+    if array[low] == element:
+        return low
 
 
-print(binary_search([2, 3, 4, 5, 8, 9, 10, 15, 17], 15))
+print(first_occurrence([2, 3, 3, 4, 4, 4, 5, 5, 6], 5))
 
 # -----------------------------------------------------------------
