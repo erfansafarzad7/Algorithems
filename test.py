@@ -261,7 +261,7 @@ Remove Min
 
 # -----------------------------------------------------------------
 
-import random
+# import random
 
 """
 One Time Pad Cipher
@@ -270,30 +270,53 @@ One Time Pad Cipher
 """
 
 
-class OneTimePad:
-    def encrypt(self, text):
-        plain = [ord(i) for i in text]
-        key = []
-        cipher = []
-        for i in plain:
-            k = random.randint(1, 300)
-            c = (i + k) * k
-            cipher.append(c)
-            key.append(k)
-        return cipher, key
+# class OneTimePad:
+#     def encrypt(self, text):
+#         plain = [ord(i) for i in text]
+#         key = []
+#         cipher = []
+#         for i in plain:
+#             k = random.randint(1, 300)
+#             c = (i + k) * k
+#             cipher.append(c)
+#             key.append(k)
+#         return cipher, key
+#
+#     def decrypt(self, cipher, key):
+#         plain = []
+#         for i in range(len(key)):
+#             p = int((cipher[i] - key[i] ** 2) / key[i])
+#             plain.append(chr(p))
+#         result = ''.join([i for i in plain])
+#         return result
+#
+#
+# c, k = OneTimePad().encrypt('erfan')
+# print(c, '\n', k)
+#
+# print(OneTimePad().decrypt(c, k))
 
-    def decrypt(self, cipher, key):
-        plain = []
-        for i in range(len(key)):
-            p = int((cipher[i] - key[i] ** 2) / key[i])
-            plain.append(chr(p))
-        result = ''.join([i for i in plain])
-        return result
+# -----------------------------------------------------------------
+
+"""
+Two Sum
+    [2, 4, 5, 8, 12], 9 => [2, 3]
+"""
 
 
-c, k = OneTimePad().encrypt('erfan')
-print(c, '\n', k)
+def two_sum(numbers, target):
+    p1 = 0
+    p2 = len(numbers) - 1
+    while p1 < p2:
+        s = numbers[p1] + numbers[p2]
+        if s == target:
+            return [p1 + 1, p2 + 1]
+        elif s > target:
+            p2 -= 1
+        else:
+            p1 += 1
 
-print(OneTimePad().decrypt(c, k))
+
+print(f'numbers position: {two_sum([2, 4, 5, 8, 12], 9)}')
 
 # -----------------------------------------------------------------
