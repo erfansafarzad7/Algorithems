@@ -304,19 +304,37 @@ Two Sum
 """
 
 
-def two_sum(numbers, target):
-    p1 = 0
-    p2 = len(numbers) - 1
-    while p1 < p2:
-        s = numbers[p1] + numbers[p2]
-        if s == target:
-            return [p1 + 1, p2 + 1]
-        elif s > target:
-            p2 -= 1
-        else:
-            p1 += 1
+# def two_sum(numbers, target):
+#     p1 = 0
+#     p2 = len(numbers) - 1
+#     while p1 < p2:
+#         s = numbers[p1] + numbers[p2]
+#         if s == target:
+#             return [p1 + 1, p2 + 1]
+#         elif s > target:
+#             p2 -= 1
+#         else:
+#             p1 += 1
+#
+#
+# print(f'numbers position: {two_sum([2, 4, 5, 8, 12], 9)}')
+
+# -----------------------------------------------------------------
+
+"""
+Rotate
+    'hello', 2 => 'llohe'
+"""
 
 
-print(f'numbers position: {two_sum([2, 4, 5, 8, 12], 9)}')
+def rotate(s, k):
+    double_s = s + s
+    if k <= len(s):
+        return double_s[k:k+len(s)]
+    else:
+        return double_s[k-len(s):k]
+
+
+print(rotate('hello', 2))
 
 # -----------------------------------------------------------------
