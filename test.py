@@ -327,14 +327,43 @@ Rotate
 """
 
 
-def rotate(s, k):
-    double_s = s + s
-    if k <= len(s):
-        return double_s[k:k+len(s)]
-    else:
-        return double_s[k-len(s):k]
+# def rotate(s, k):
+#     double_s = s + s
+#     if k <= len(s):
+#         return double_s[k:k+len(s)]
+#     else:
+#         return double_s[k-len(s):k]
+#
+#
+# print(rotate('hello', 2))
+
+# -----------------------------------------------------------------
+
+"""
+Search Range
+    [1, 2, 2, 3, 3, 3, 5, 5, 6], 3 => [3, 5]
+"""
 
 
-print(rotate('hello', 2))
+def search_range(nums, target):
+    low = 0
+    high = len(nums) - 1
+    while low <= high:
+        mid = low + (high - low) // 2
+        if target <= nums[mid]:
+            high = mid - 1
+        elif target > nums[mid]:
+            low = mid + 1
+        else:
+            break
+
+    for j in range(len(nums)-1, -1, -1):
+        if nums[j] == target:
+            return [mid, j]
+
+    return [None, None]
+
+
+print(search_range([1, 2, 2, 3, 3, 3, 5, 5, 6], 3))
 
 # -----------------------------------------------------------------
