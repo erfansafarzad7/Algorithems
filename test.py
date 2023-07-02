@@ -212,19 +212,51 @@ Move Zeros
 """
 
 
-def move_zeros(seq):
-    result = []
-    zeros = 0
-    for i in seq:
-        if i == 0 and type(i) != bool:
-            zeros += 1
-        else:
-            result.append(i)
+# def move_zeros(seq):
+#     result = []
+#     zeros = 0
+#     for i in seq:
+#         if i == 0 and type(i) != bool:
+#             zeros += 1
+#         else:
+#             result.append(i)
+#
+#     result.extend([0] * zeros)
+#     return result
+#
+#
+# print(move_zeros([False, 1, 3, 2, 0, 4, 0, 'a']))
 
-    result.extend([0] * zeros)
-    return result
+# -----------------------------------------------------------------
+
+"""
+Remove Min
+    [3, 6, 2, 5, 9, -1, 3] => [3, 6, 2, 5, 9, 3]
+"""
 
 
-print(move_zeros([False, 1, 3, 2, 0, 4, 0, 'a']))
+def remove_min(stack):
+    storage_stack = []
+    if len(stack) == 0:
+        return stack
+
+    m = stack[0]
+    # m = stack.pop()
+    # stack.append(m)
+    for i in range(len(stack)):
+        val = stack.pop()
+        if val <= m:
+            m = val
+        storage_stack.append(val)
+
+    for i in range(len(storage_stack)):
+        val = storage_stack.pop()
+        if val != m:
+            stack.append(val)
+
+    return stack, m
+
+
+print(remove_min([3, 6, 2, 5, 9, -1, 3]))
 
 # -----------------------------------------------------------------
