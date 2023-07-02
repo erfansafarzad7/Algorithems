@@ -183,25 +183,48 @@ ZigZag Iterator
 """
 
 
-class ZigZag:
-    def __init__(self, l1, l2):
-        self.queue = [l1, l2]
+# class ZigZag:
+#     def __init__(self, l1, l2):
+#         self.queue = [l1, l2]
+#
+#     def next(self):
+#         v = self.queue.pop(0)
+#         r = v.pop(0)
+#         if v:
+#             self.queue.append(v)
+#         return r
+#
+#     def has_next(self):
+#         if self.queue:
+#             return True
+#         return False
+#
+#
+# z = ZigZag([1, 3, 5, 7, 9], [2, 4, 6, 8, 10])
+# while z.has_next():
+#     print(z.next(), end=' ')
 
-    def next(self):
-        v = self.queue.pop(0)
-        r = v.pop(0)
-        if v:
-            self.queue.append(v)
-        return r
+# -----------------------------------------------------------------
 
-    def has_next(self):
-        if self.queue:
-            return True
-        return False
+"""
+Move Zeros
+    [False, 1, 3, 2, 0, 4, 0, 'a'] => [False, 1, 3, 2, 4, 'a', 0, 0]
+"""
 
 
-z = ZigZag([1, 3, 5, 7, 9], [2, 4, 6, 8, 10])
-while z.has_next():
-    print(z.next(), end=' ')
+def move_zeros(seq):
+    result = []
+    zeros = 0
+    for i in seq:
+        if i == 0 and type(i) != bool:
+            zeros += 1
+        else:
+            result.append(i)
+
+    result.extend([0] * zeros)
+    return result
+
+
+print(move_zeros([False, 1, 3, 2, 0, 4, 0, 'a']))
 
 # -----------------------------------------------------------------
