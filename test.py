@@ -139,15 +139,40 @@ a1z26
 """
 
 
-def encode(text):
-    return [ord(elm) - 70 for elm in text]
+# def encode(text):
+#     return [ord(elm) - 70 for elm in text]
+#
+#
+# def decode(lst):
+#     return "".join([chr(elm + 70)for elm in lst])
+#
+#
+# print(encode('erfan'))
+# print(decode([31, 44, 32, 27, 40]))
+
+# -----------------------------------------------------------------
+
+"""
+Bead Sort
+    [5, 1, 3, 9, 6, 3, 8, 2] => [1, 2, 3, 3, 5, 6, 8, 9]
+"""
 
 
-def decode(lst):
-    return "".join([chr(elm + 70)for elm in lst])
+def bead_sort(sequence):
+    if any(not isinstance(x, int) or x < 0 for x in sequence):
+        raise TypeError('sequence must be list of non-negative integers')
+
+    for _ in range(len(sequence)):
+
+        for i, (rod_upper, rod_lower) in enumerate(zip(sequence, sequence[1:])):
+
+            if rod_upper > rod_lower:
+                sequence[i] -= rod_upper - rod_lower
+                sequence[i + 1] += rod_upper - rod_lower
+
+    return sequence
 
 
-print(encode('erfan'))
-print(decode([31, 44, 32, 27, 40]))
+print(bead_sort([5, 1, 3, 9, 6, 3, 8, 2]))
 
 # -----------------------------------------------------------------
