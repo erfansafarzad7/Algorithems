@@ -235,28 +235,65 @@ Remove Min
 """
 
 
-def remove_min(stack):
-    storage_stack = []
-    if len(stack) == 0:
-        return stack
+# def remove_min(stack):
+#     storage_stack = []
+#     if len(stack) == 0:
+#         return stack
+#
+#     m = stack[0]
+#     # m = stack.pop()
+#     # stack.append(m)
+#     for i in range(len(stack)):
+#         val = stack.pop()
+#         if val <= m:
+#             m = val
+#         storage_stack.append(val)
+#
+#     for i in range(len(storage_stack)):
+#         val = storage_stack.pop()
+#         if val != m:
+#             stack.append(val)
+#
+#     return stack, m
+#
+#
+# print(remove_min([3, 6, 2, 5, 9, -1, 3]))
 
-    m = stack[0]
-    # m = stack.pop()
-    # stack.append(m)
-    for i in range(len(stack)):
-        val = stack.pop()
-        if val <= m:
-            m = val
-        storage_stack.append(val)
+# -----------------------------------------------------------------
 
-    for i in range(len(storage_stack)):
-        val = storage_stack.pop()
-        if val != m:
-            stack.append(val)
+import random
 
-    return stack, m
+"""
+One Time Pad Cipher
+    erfan => cipher => [22890, 60760, 12528, 44954, 18584] 
+             key => [109, 196, 72, 169, 92]
+"""
 
 
-print(remove_min([3, 6, 2, 5, 9, -1, 3]))
+class OneTimePad:
+    def encrypt(self, text):
+        plain = [ord(i) for i in text]
+        key = []
+        cipher = []
+        for i in plain:
+            k = random.randint(1, 300)
+            c = (i + k) * k
+            cipher.append(c)
+            key.append(k)
+        return cipher, key
+
+    def decrypt(self, cipher, key):
+        plain = []
+        for i in range(len(key)):
+            p = int((cipher[i] - key[i] ** 2) / key[i])
+            plain.append(chr(p))
+        result = ''.join([i for i in plain])
+        return result
+
+
+c, k = OneTimePad().encrypt('erfan')
+print(c, '\n', k)
+
+print(OneTimePad().decrypt(c, k))
 
 # -----------------------------------------------------------------
