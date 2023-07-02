@@ -345,25 +345,50 @@ Search Range
 """
 
 
-def search_range(nums, target):
-    low = 0
-    high = len(nums) - 1
+# def search_range(nums, target):
+#     low = 0
+#     high = len(nums) - 1
+#     while low <= high:
+#         mid = low + (high - low) // 2
+#         if target <= nums[mid]:
+#             high = mid - 1
+#         elif target > nums[mid]:
+#             low = mid + 1
+#         else:
+#             break
+#
+#     for j in range(len(nums)-1, -1, -1):
+#         if nums[j] == target:
+#             return [mid, j]
+#
+#     return [None, None]
+#
+#
+# print(search_range([1, 2, 2, 3, 3, 3, 5, 5, 6], 3))
+
+# -----------------------------------------------------------------
+
+"""
+Binary Search
+    [2, 3, 4, 5, 8, 9, 10, 15, 17], 15 => 7
+"""
+
+
+def binary_search(array, element):
+    low, high = 0, len(array) - 1
+
     while low <= high:
-        mid = low + (high - low) // 2
-        if target <= nums[mid]:
+        mid = (high + low) // 2
+        val = array[mid]
+        if val > element:
             high = mid - 1
-        elif target > nums[mid]:
+        elif val < element:
             low = mid + 1
         else:
-            break
-
-    for j in range(len(nums)-1, -1, -1):
-        if nums[j] == target:
-            return [mid, j]
-
-    return [None, None]
+            return mid
+    return -1
 
 
-print(search_range([1, 2, 2, 3, 3, 3, 5, 5, 6], 3))
+print(binary_search([2, 3, 4, 5, 8, 9, 10, 15, 17], 15))
 
 # -----------------------------------------------------------------
